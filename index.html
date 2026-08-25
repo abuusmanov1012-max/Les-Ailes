@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="uz" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Ailes - Mazali Fast-Food Yetkazib Berish</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-gray-50 font-sans text-gray-900">
+
+    <!-- TOP HEADER -->
+    <div class="bg-amber-500 text-xs text-gray-950 py-2 px-4 font-semibold">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <span class="flex items-center gap-1"><i class="fa-solid fa-location-dot"></i> Toshkent shahri</span>
+                <span class="hidden sm:inline">Yetkazib berish vaqti: 30 daqiqadan boshlab</span>
+            </div>
+            <div class="flex gap-6">
+                <a href="#branches" class="hover:underline">Filiallar</a>
+                <a href="#contacts" class="hover:underline">Bog'lanish</a>
+                <button onclick="toggleAdminModal()"
+                    class="hover:underline font-bold text-gray-950 bg-amber-400 px-2 py-0.5 rounded">Admin
+                    Panel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVBAR -->
+    <header class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+            <!-- LOGO -->
+            <a href="#" class="flex items-center gap-2">
+                <div
+                    class="bg-amber-400 text-gray-950 font-black text-2xl px-4 py-1.5 rounded-2xl tracking-wider uppercase shadow">
+                    Les Ailes
+                </div>
+            </a>
+
+            <!-- NAVIGATION LINKS -->
+            <nav class="hidden md:flex items-center gap-6 font-bold text-sm uppercase text-gray-700">
+                <a href="#menu" class="hover:text-amber-600 transition">Menyu</a>
+                <a href="#combos" class="text-amber-600 hover:text-amber-700 transition">Kombolar</a>
+                <a href="#branches" class="hover:text-amber-600 transition">Filiallar</a>
+            </nav>
+
+            <!-- ACTIONS -->
+            <div class="flex items-center gap-4">
+                <button onclick="alert('Kabinetga xush kelibsiz!')"
+                    class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-bold text-sm transition flex items-center gap-2 cursor-pointer">
+                    <i class="fa-regular fa-user"></i> Kirish
+                </button>
+                <button onclick="toggleCartModal()"
+                    class="bg-amber-500 hover:bg-amber-600 text-gray-950 px-5 py-2 rounded-full font-bold text-sm transition flex items-center gap-2 shadow-md relative cursor-pointer">
+                    <i class="fa-solid fa-cart-shopping"></i> Savat
+                    <span id="cartCount"
+                        class="bg-gray-950 text-white text-xs px-2 py-0.5 rounded-full font-black">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 py-6">
+
+        <!-- HERO BANNER -->
+        <div
+            class="rounded-3xl overflow-hidden shadow-xl mb-12 bg-gradient-to-r from-amber-500 to-amber-600 text-gray-950 relative">
+            <div class="grid grid-cols-1 md:grid-cols-2 items-center p-8 md:p-12 gap-6">
+                <div class="z-10">  
+                    <span
+                        class="bg-white text-amber-900 font-black text-xs uppercase px-3 py-1 rounded-full inline-block mb-4 shadow">Maxsus
+                        Taklif</span>
+                    <h1 class="text-4xl md:text-6xl font-black mb-4 uppercase tracking-tight">Katta Sezon Kombosi!</h1>
+                    <p class="text-gray-900 text-sm md:text-base mb-6 font-medium">Mazali pitsa, xarsildoq kartoshka,
+                        tansiq tovuq qanotlari va sevimli ichimliklar birgalikda foydaliroq.</p>
+                    <a href="#combos"
+                        class="bg-gray-950 text-white hover:bg-gray-900 font-black px-8 py-3.5 rounded-full uppercase text-sm tracking-wider inline-block shadow-lg transition">Kombolarni
+                        ko'rish</a>
+                </div>
+                <div class="flex justify-center">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80"
+                        alt="Combo" class="rounded-2xl shadow-2xl object-cover h-64 md:h-80 w-full max-w-md">
+                </div>
+            </div>
+        </div>
+
+        <!-- MENU ITEMS SECTION -->
+        <section id="menu" class="mb-16">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-black uppercase text-gray-800 tracking-tight">Bizning Menyu</h2>
+            </div>
+            <!-- Dinamik menyu konteyneri -->
+            <div id="dynamicMenuGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- JavaScript orqali to'ldiriladi -->
+            </div>
+        </section>
+
+        <!-- BRANCHES SECTION -->
+        <section id="branches" class="mb-16">
+            <h2 class="text-3xl font-black mb-8 uppercase text-gray-800 tracking-tight">Bizning Filiallar</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-3xl shadow-sm border flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-3">
+                            <div
+                                class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-store"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-gray-900">Chilonzor filiali</h3>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2"><i
+                                class="fa-solid fa-location-dot text-amber-500 mr-1"></i> Chilonzor tumani, Qatortol
+                            ko'chasi, 28-uy</p>
+                        <p class="text-xs text-gray-500 mb-4"><i class="fa-regular fa-clock text-amber-500 mr-1"></i>
+                            Ish vaqti: 10:00 - 03:00</p>
+                    </div>
+                    <span
+                        class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1.5 rounded-full text-center">Ochiq</span>
+                </div>
+
+                <div class="bg-white p-6 rounded-3xl shadow-sm border flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-3">
+                            <div
+                                class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-store"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-gray-900">Yunusobod filiali</h3>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2"><i
+                                class="fa-solid fa-location-dot text-amber-500 mr-1"></i> Yunusobod tumani, Amir Temur
+                            shoh ko'chasi</p>
+                        <p class="text-xs text-gray-500 mb-4"><i class="fa-regular fa-clock text-amber-500 mr-1"></i>
+                            Ish vaqti: 10:00 - 03:00</p>
+                    </div>
+                    <span
+                        class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1.5 rounded-full text-center">Ochiq</span>
+                </div>
+
+                <div class="bg-white p-6 rounded-3xl shadow-sm border flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-3">
+                            <div
+                                class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-store"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-gray-900">Markaz (Amir Temur)</h3>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2"><i
+                                class="fa-solid fa-location-dot text-amber-500 mr-1"></i> Mirobod tumani, Broadway
+                            ko'chasi</p>
+                        <p class="text-xs text-gray-500 mb-4"><i class="fa-regular fa-clock text-amber-500 mr-1"></i>
+                            Ish vaqti: 24/7</p>
+                    </div>
+                    <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1.5 rounded-full text-center">24
+                        soat ochiq</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="contacts" class="bg-gray-900 text-white py-8 px-4">
+        <div
+            class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+            <div>
+                <h3 class="text-xl font-black text-amber-400 mb-1">Les Ailes</h3>
+                <p class="text-xs text-gray-400">Mazali va tezkor yetkazib berish xizmati.</p>
+            </div>
+            <div class="text-sm text-gray-300">
+                <p>Aloqa markazi: <span class="font-bold text-amber-400">+998 92 151 46 44</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CART MODAL -->
+    <div id="cartModal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl relative">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-black uppercase text-gray-900">Sizning Savatingiz</h3>
+                <button onclick="toggleCartModal()" class="text-gray-400 hover:text-gray-600 font-bold text-lg"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="cartItemsList" class="space-y-3 max-h-60 overflow-y-auto mb-4 border-y py-2">
+                <p class="text-sm text-gray-500 text-center py-4">Savatingiz hozircha bo'sh</p>
+            </div>
+            <div class="flex justify-between items-center mb-6">
+                <span class="font-bold text-gray-700">Jami:</span>
+                <span id="cartTotalPrice" class="text-xl font-black text-amber-600">0 so'm</span>
+            </div>
+            <button onclick="checkout()"
+                class="w-full bg-amber-500 hover:bg-amber-600 text-gray-950 font-black py-3 rounded-2xl uppercase tracking-wide shadow transition cursor-pointer">Buyurtmani
+                rasmiylashtirish</button>
+        </div>
+    </div>
+
+    <!-- ADMIN PANEL MODAL -->
+    <div id="adminModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4 border-b pb-3">
+                <h3 class="text-2xl font-black uppercase text-gray-900"><i class="fa-solid fa-lock text-amber-500"></i>
+                    Admin Panel</h3>
+                <button onclick="toggleAdminModal()" class="text-gray-400 hover:text-gray-600 font-bold text-xl"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <!-- Yangi mahsulot qo'shish formasi -->
+            <div class="bg-gray-50 p-4 rounded-2xl mb-6 border">
+                <h4 class="font-bold text-gray-800 mb-3 uppercase text-sm">Yangi Mahsulot Qo'shish</h4>
+                <form id="addProductForm" onsubmit="addNewProduct(event)" class="space-y-3">
+                    <input type="text" id="prodName" placeholder="Mahsulot nomi" required
+                        class="w-full p-2.5 border rounded-xl text-sm">
+                    <input type="number" id="prodPrice" placeholder="Narxi (so'm)" required
+                        class="w-full p-2.5 border rounded-xl text-sm">
+                    <input type="text" id="prodImage" placeholder="Rasm havolasi (URL)" required
+                        class="w-full p-2.5 border rounded-xl text-sm">
+                    <input type="text" id="prodDesc" placeholder="Qisqacha tavsifi" required
+                        class="w-full p-2.5 border rounded-xl text-sm">
+                    <input type="text" id="prodBadge" placeholder="Belgi (masalan: Xit, Yangi - shart emas)"
+                        class="w-full p-2.5 border rounded-xl text-sm">
+                    <button type="submit"
+                        class="w-full bg-gray-900 hover:bg-black text-white font-bold py-2.5 rounded-xl uppercase text-sm transition">Qo'shish</button>
+                </form>
+            </div>
+
+            <!-- Mavjud mahsulotlar ro'yxati va o'chirish -->
+            <div class="mb-6">
+                <h4 class="font-bold text-gray-800 mb-3 uppercase text-sm">Mahsulotlarni Boshqarish</h4>
+                <div id="adminProductsList" class="space-y-2 max-h-48 overflow-y-auto border p-2 rounded-xl">
+                    <!-- JS orqali to'ldiriladi -->
+                </div>
+            </div>
+
+            <!-- YANGI: Odam (Foydalanuvchi) qo'shish va Ban qilish bo'limi -->
+            <div class="bg-gray-50 p-4 rounded-2xl mb-6 border">
+                <h4 class="font-bold text-gray-800 mb-3 uppercase text-sm">Yangi Odam Qo'shish</h4>
+                <form id="addUserForm" onsubmit="addNewUser(event)" class="space-y-3">
+                    <input type="text" id="userName" placeholder="Foydalanuvchi ismi" required
+                        class="w-full p-2.5 border rounded-xl text-sm">
+                    <input type="text" id="userPhone" placeholder="Telefon raqami (+998...)" required
+                        class="w-full p-2.5 border rounded-xl text-sm">
+                    <button type="submit"
+                        class="w-full bg-amber-500 hover:bg-amber-600 text-gray-950 font-bold py-2.5 rounded-xl uppercase text-sm transition">Odam
+                        Qo'shish</button>
+                </form>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-gray-800 mb-3 uppercase text-sm">Foydalanuvchilarni Boshqarish (Ban qilish)
+                </h4>
+                <div id="adminUsersList" class="space-y-2 max-h-48 overflow-y-auto border p-2 rounded-xl">
+                    <!-- JS orqali to'ldiriladi -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Boshlang'ich mahsulotlar ro'yxati (Agar LocalStorage bo'sh bo'lsa ishlatiladi)
+        const defaultProducts = [
+            { id: 1, name: "Pitsa Pepperoni", price: 74000, oldPrice: 85000, image: "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=500&q=80", desc: "Kolbasa pepperoni, motsarella pishloqi va pomidor sousi.", badge: "Xit" },
+            { id: 2, name: "Pitsa Margarita", price: 65000, oldPrice: null, image: "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=500&q=80", desc: "Klassik motsarella pishloqi, bazilik va maxsus pomidor sousi.", badge: null },
+            { id: 3, name: "Chicken Burger", price: 32000, oldPrice: null, image: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=500&q=80", desc: "Qarsildoq tovuq kotleti, yumshoq bulochka va maxsus sous.", badge: "Yangi" },
+            { id: 4, name: "Double Cheeseburger", price: 38000, oldPrice: 42000, image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80", desc: "Ikki qavat mol go'shti kotleti va erigan cheddar pishloqi.", badge: null },
+            { id: 5, name: "Lavash Mol Go'shtidan", price: 36000, oldPrice: null, image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=500&q=80", desc: "Nozik yupqa lavash, sersuv mol go'shti va maxsus sarimsoqli sous.", badge: "Xit" },
+            { id: 6, name: "Lavash Tovuqli", price: 33000, oldPrice: null, image: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=500&q=80", desc: "Qarsildoq tovuq bo'laklari, pomidor va firmaviy sous.", badge: null },
+            { id: 7, name: "Kartoshka Fri", price: 16000, oldPrice: null, image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=500&q=80", desc: "Tilla rangdagi qarsildoq va issiq fri kartoshkasi.", badge: null },
+            { id: 8, name: "Coca-Cola (1 L)", price: 13000, oldPrice: null, image: "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=500&q=80", desc: "Muzdek salqin va tetiklashtiruvchi gazlangan ichimlik.", badge: null }
+        ];
+
+        // Boshlang'ich foydalanuvchilar
+        const defaultUsers = [
+            { id: 1, name: "Alisher Toshmatov", phone: "+998 90 123 45 67", isBanned: false },
+            { id: 2, name: "Jasur Karimov", phone: "+998 93 987 65 43", isBanned: false }
+        ];
+
+        // Mahsulotlar, savat va foydalanuvchilarni LocalStorage'dan olish
+        let products = JSON.parse(localStorage.getItem('les_ailes_products')) || defaultProducts;
+        let cart = JSON.parse(localStorage.getItem('les_ailes_cart')) || [];
+        let users = JSON.parse(localStorage.getItem('les_ailes_users')) || defaultUsers;
+
+        // Sahifa yuklanganda ishga tushadigan funksiyalar
+        window.onload = function () {
+            renderMenu();
+            updateCartUI();
+        };
+
+        // Menuni ekranga chiqarish
+        function renderMenu() {
+            const menuGrid = document.getElementById('dynamicMenuGrid');
+            menuGrid.innerHTML = '';
+
+            products.forEach(product => {
+                let badgeHTML = product.badge ? `<span class="absolute top-4 left-4 bg-amber-500 text-gray-950 text-[10px] font-black uppercase px-2.5 py-1 rounded-full shadow">${product.badge}</span>` : '';
+                let oldPriceHTML = product.oldPrice ? `<span class="text-xs text-gray-400 line-through">${product.oldPrice.toLocaleString()} so'm</span>` : '';
+
+                let card = `
+                    <div class="bg-white rounded-3xl shadow-sm hover:shadow-xl transition p-4 flex flex-col justify-between border relative">
+                        ${badgeHTML}
+                        <div>
+                            <img src="${product.image}" class="w-full h-48 object-cover rounded-2xl mb-4" alt="${product.name}">
+                            <h3 class="font-bold text-gray-900 text-lg mb-1">${product.name}</h3>
+                            <p class="text-xs text-gray-500 mb-3">${product.desc}</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-4">
+                            <div>
+                                ${oldPriceHTML}
+                                <p class="text-xl font-black text-amber-600">${product.price.toLocaleString()} so'm</p>
+                            </div>
+                            <button onclick="addToCart('${product.name}', ${product.price})"
+                                class="bg-amber-500 hover:bg-amber-600 text-gray-950 w-10 h-10 rounded-full flex items-center justify-center font-bold shadow-md transition cursor-pointer">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                menuGrid.innerHTML += card;
+            });
+            renderAdminProductsList();
+            renderAdminUsersList();
+        }
+
+        // Savatga qo'shish
+        function addToCart(itemName, price) {
+            let existingItem = cart.find(item => item.name === itemName);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name: itemName, price: price, quantity: 1 });
+            }
+            saveCart();
+            updateCartUI();
+            alert(itemName + " savatga qo'shildi!");
+        }
+
+        // Savatni saqlash va yangilash
+        function saveCart() {
+            localStorage.setItem('les_ailes_cart', JSON.stringify(cart));
+        }
+
+        function updateCartUI() {
+            let totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').innerText = totalCount;
+
+            let cartListContainer = document.getElementById('cartItemsList');
+            let totalPriceContainer = document.getElementById('cartTotalPrice');
+
+            if (cart.length === 0) {
+                cartListContainer.innerHTML = '<p class="text-sm text-gray-500 text-center py-4">Savatingiz hozircha bo\'sh</p>';
+                totalPriceContainer.innerText = '0 so\'m';
+                return;
+            }
+
+            cartListContainer.innerHTML = '';
+            let totalPrice = 0;
+
+            cart.forEach((item, index) => {
+                let itemTotal = item.price * item.quantity;
+                totalPrice += itemTotal;
+                cartListContainer.innerHTML += `
+                    <div class="flex justify-between items-center text-sm">
+                        <div>
+                            <p class="font-bold">${item.name}</p>
+                            <p class="text-xs text-gray-500">${item.price.toLocaleString()} so'm x ${item.quantity}</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="font-bold text-amber-600">${itemTotal.toLocaleString()} so'm</span>
+                            <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </div>
+                `;
+            });
+            totalPriceContainer.innerText = totalPrice.toLocaleString() + " so'm";
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            saveCart();
+            updateCartUI();
+        }
+
+        function toggleCartModal() {
+            const modal = document.getElementById('cartModal');
+            modal.classList.toggle('hidden');
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert("Savatingiz bo'sh!");
+                return;
+            }
+            alert("Buyurtmangiz qabul qilindi! Operator tez orada siz bilan bog'lanadi.");
+            cart = [];
+            saveCart();
+            updateCartUI();
+            toggleCartModal();
+        }
+
+        // --- ADMIN PANEL FUNKSIYALARI (Parol bilan himoyalangan) ---
+        function toggleAdminModal() {
+            const modal = document.getElementById('adminModal');
+
+            // Agar modal ochiq bo'lsa, uni yopamiz
+            if (!modal.classList.contains('hidden')) {
+                modal.classList.add('hidden');
+                return;
+            }
+
+            // Agar yopiq bo'lsa, parolni so'raymiz
+            let password = prompt("Admin panelga kirish uchun parolni kiriting:");
+
+            // Parol "Wassupluts" qilib belgilandi
+            const adminPassword = "Wassupluts";
+
+            if (password === adminPassword) {
+                modal.classList.remove('hidden');
+                renderAdminProductsList();
+                renderAdminUsersList();
+            } else if (password !== null) {
+                alert("Noto'g'ri parol! Siz admin emassiz.");
+            }
+        }
+
+        function addNewProduct(event) {
+            event.preventDefault();
+            const name = document.getElementById('prodName').value;
+            const price = Number(document.getElementById('prodPrice').value);
+            const image = document.getElementById('prodImage').value;
+            const desc = document.getElementById('prodDesc').value;
+            const badge = document.getElementById('prodBadge').value || null;
+
+            const newProd = {
+                id: Date.now(),
+                name,
+                price,
+                oldPrice: null,
+                image,
+                desc,
+                badge
+            };
+
+            products.push(newProd);
+            localStorage.setItem('les_ailes_products', JSON.stringify(products));
+            renderMenu();
+            document.getElementById('addProductForm').reset();
+            alert("Yangi mahsulot muvaffaqiyatli qo'shildi!");
+        }
+
+        function renderAdminProductsList() {
+            const listContainer = document.getElementById('adminProductsList');
+            listContainer.innerHTML = '';
+
+            if (products.length === 0) {
+                listContainer.innerHTML = '<p class="text-xs text-gray-500 text-center py-2">Mahsulotlar yo\'q</p>';
+                return;
+            }
+
+            products.forEach((prod, index) => {
+                listContainer.innerHTML += `
+                    <div class="flex justify-between items-center bg-white p-2 rounded-lg border text-xs">
+                        <div class="flex items-center gap-2">
+                            <img src="${prod.image}" class="w-8 h-8 object-cover rounded">
+                            <span class="font-bold">${prod.name}</span> - <span>${prod.price.toLocaleString()} so'm</span>
+                        </div>
+                        <button onclick="deleteProduct(${index})" class="bg-red-100 text-red-600 px-2 py-1 rounded hover:bg-red-200 font-bold"><i class="fa-solid fa-trash"></i> O'chirish</button>
+                    </div>
+                `;
+            });
+        }
+
+        function deleteProduct(index) {
+            if (confirm("Rostdan ham bu mahsulotni o'chirmoqchimisiz?")) {
+                products.splice(index, 1);
+                localStorage.setItem('les_ailes_products', JSON.stringify(products));
+                renderMenu();
+            }
+        }
+
+        // --- FOYDALANUVCHILARNI QO'SHISH VA BAN QILISH ---
+        function addNewUser(event) {
+            event.preventDefault();
+            const name = document.getElementById('userName').value;
+            const phone = document.getElementById('userPhone').value;
+
+            const newUser = {
+                id: Date.now(),
+                name,
+                phone,
+                isBanned: false
+            };
+
+            users.push(newUser);
+            localStorage.setItem('les_ailes_users', JSON.stringify(users));
+            renderAdminUsersList();
+            document.getElementById('addUserForm').reset();
+            alert("Yangi odam qo'shildi!");
+        }
+
+        function renderAdminUsersList() {
+            const usersContainer = document.getElementById('adminUsersList');
+            usersContainer.innerHTML = '';
+
+            if (users.length === 0) {
+                usersContainer.innerHTML = '<p class="text-xs text-gray-500 text-center py-2">Foydalanuvchilar yo\'q</p>';
+                return;
+            }
+
+            users.forEach((user, index) => {
+                let banBtnText = user.isBanned ? "Bandan chiqarish" : "Ban qilish";
+                let banBtnClass = user.isBanned ? "bg-green-100 text-green-700 hover:bg-green-200" : "bg-red-100 text-red-600 hover:bg-red-200";
+                let statusText = user.isBanned ? '<span class="text-red-500 font-bold">(Ban qilingan)</span>' : '<span class="text-green-600 font-bold">(Faol)</span>';
+
+                usersContainer.innerHTML += `
+                    <div class="flex justify-between items-center bg-white p-2 rounded-lg border text-xs">
+                        <div>
+                            <p class="font-bold">${user.name} ${statusText}</p>
+                            <p class="text-gray-500">${user.phone}</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="toggleBanUser(${index})" class="${banBtnClass} px-2.5 py-1 rounded font-bold">${banBtnText}</button>
+                            <button onclick="deleteUser(${index})" class="bg-gray-200 text-gray-700 px-2 py-1 rounded hover:bg-gray-300 font-bold"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function toggleBanUser(index) {
+            users[index].isBanned = !users[index].isBanned;
+            localStorage.setItem('les_ailes_users', JSON.stringify(users));
+            renderAdminUsersList();
+        }
+
+        function deleteUser(index) {
+            if (confirm("Bu foydalanuvchini ro'yxatdan o'chirmoqchimisiz?")) {
+                users.splice(index, 1);
+                localStorage.setItem('les_ailes_users', JSON.stringify(users));
+                renderAdminUsersList();
+            }
+        }
+        const adminPassword = "Wassupluts"; 
+    </script>
+</body>
+
+</html>
